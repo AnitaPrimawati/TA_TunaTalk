@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TunaTalk - Tentang SIBI</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3f3dff;
+      --secondary: #6c63ff;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --border-radius: 12px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7ff;
+      color: var(--dark);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Navbar */
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      flex-shrink: 0;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    
+    .nav-menu li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-menu li a:hover {
+      color: var(--primary);
+      background-color: rgba(63, 61, 255, 0.1);
+    }
+    
+    .nav-menu li a.active {
+      color: white;
+      background-color: var(--primary);
+    }
+    
+    /* Main Content */
+    .about-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 1rem 20px;
+    }
+    
+    .about-content {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 2rem;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      height: 100%;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .page-header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-header p {
+      color: var(--gray);
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      height: 100%;
+    }
+    
+    .section {
+      background-color: var(--light);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .section-title {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-title i {
+      font-size: 1rem;
+    }
+    
+    .section-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    ul.feature-list {
+      list-style-type: none;
+    }
+    
+    ul.feature-list li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    
+    ul.feature-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-menu {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      
+      .about-container {
+        padding: 1rem 10px;
+      }
+      
+      .about-content {
+        padding: 1.5rem;
+      }
+      
+      .content-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+      }
+      
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .section {
+        min-height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li><a href="beranda.html">Beranda</a></li>
+        <li><a href="deteksi.html">Deteksi</a></li>
+        <li><a href="komunikasi.html">Komunikasi</a></li>
+        <li><a href="riwayat.html">Riwayat</a></li>
+        <li><a href="kamus.html">Kamus</a></li>
+        <li><a href="tentang.html" class="active">Tentang</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="about-container">
+    <div class="about-content">
+      <div class="page-header">
+        <h1>Tentang SIBI</h1>
+        <p>Sistem Isyarat Bahasa Indonesia untuk memudahkan komunikasi</p>
+      </div>
+      
+      <div class="content-grid">
+        <div class="section">
+          <div class="section-title">
+            <i class="fas fa-history"></i>
+            <h2>Sejarah SIBI</h2>
+          </div>
+          <div class="section-content">
+            <p>Sistem Isyarat Bahasa Indonesia (SIBI) adalah sistem bahasa isyarat resmi yang dikembangkan di Indonesia untuk memfasilitasi komunikasi bagi penyandang disabilitas rungu.</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">
+            <i class="fas fa-cogs"></i>
+            <h2>Teknologi</h2>
+          </div>
+          <div class="section-content">
+            <p>Menggunakan MediaPipe untuk deteksi gesture dan machine learning untuk penerjemahan isyarat ke teks.</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <div class="section-title">
+            <i class="fas fa-bullseye"></i>
+            <h2>Tujuan</h2>
+          </div>
+          <div class="section-content">
+            <ul class="feature-list">
+              <li>Meningkatkan akses komunikasi</li>
+              <li>Mendukung proses belajar-mengajar</li>
+              <li>Integrasi teknologi AI</li>
+              <li>Penerjemahan real-time</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>TunaTalk - Penerjemah SIBI</title>
+  <meta name="description" content="Platform penerjemah gesture SIBI ke teks untuk penyandang tunarungu">
+
+  <!-- Favicon -->
+  <link href="assets/img/favicon.jpg" rel="icon" type="image/jpg">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #3f3dff;
+      --secondary: #6c63ff;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --light-bg: #f5f7ff;
+      --border-radius: 12px;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark);
+    }
+    
+    /* Header/Navbar */
+    .header {
+      background-color: white;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+    
+    .navmenu ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .navmenu a {
+      color: var(--dark);
+      font-weight: 100;
+      font-size: 0.93rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: var(--border-radius);
+      transition: 0.3s;
+      transition: 0.3s;
+      max-width: 120px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .navmenu a:hover {
+      color: var(--primary);
+      background-color: rgba(63, 61, 255, 0.1);
+    }
+    
+    .navmenu a.active {
+      color: white;
+      background-color: var(--primary);
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(63, 61, 255, 0.08) 0%, rgba(108, 99, 255, 0.08) 100%);
+      border-radius: var(--border-radius);
+      padding: 2rem 0;
+      margin: 2rem 0;
+    }
+    
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      max-width: 600px;
+    }
+    
+    .hero-img {
+      max-width: 80%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Button Styles */
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(63, 61, 255, 0.2);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(63, 61, 255, 0.1);
+    }
+    
+    /* fitur unggulan */
+    .features-section {
+      background: linear-gradient(135deg, #e6fff6 0%, #d0f5e9 100%);
+      border-radius: var(--border-radius);
+      padding: 4rem 0;
+      margin: 2rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      height: 100%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .feature-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: var(--dark);
+    }
+    
+    /* Cara Menggunakan */
+    .steps-section {
+      background: linear-gradient(135deg, rgba(63, 61, 255, 0.08) 0%, rgba(108, 99, 255, 0.08) 100%);
+      border-radius: var(--border-radius);
+      padding: 4rem 0;
+      margin: 2rem 0;
+    }
+    
+    .step-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      text-align: center;
+      height: 100%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 2rem 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1rem;
+      }
+      
+      .navmenu ul {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="beranda.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">TunaTalk</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="beranda.html" class="active">Beranda</a></li>
+          <li><a href="deteksi.html">Deteksi Gesture</a></li>
+          <li><a href="komunikasi.html">Komunikasi</a></li>
+          <li><a href="riwayat.html">Riwayat</a></li>
+          <li><a href="kamus.html">Kamus SIBI</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle d-none"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-1 order-2" data-aos="fade-up">
+            <h1 class="hero-title">Komunikasi Tanpa Batas dengan SIBI</h1>
+            <p class="hero-subtitle">TunaTalk membantu Anda menerjemahkan gesture tangan SIBI ke dalam teks secara real-time. Dukungan komunikasi dua arah kini lebih mudah</p>
+            <div class="d-flex gap-3">
+              <a href="deteksi.html" class="btn btn-primary">
+                <i class="bi bi-camera me-2"></i>Mulai Deteksi
+              </a>
+              <a href="kamus.html" class="btn btn-outline">
+                <i class="bi bi-book me-2"></i>Pelajari SIBI
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-2 order-1 text-center" data-aos="zoom-out">
+            <img src="assets/img/hero.png" class="hero-img" alt="Ilustrasi Deteksi Gesture" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fitur Unggulan -->
+    <section id="features" class="features-section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Fitur Unggulan</h2>
+          <p>TunaTalk menyediakan solusi lengkap untuk komunikasi menggunakan bahasa isyarat</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="bi bi-camera-video"></i>
+              </div>
+              <h3 class="feature-title">Deteksi Real-time</h3>
+              <p>Deteksi gesture SIBI secara instan melalui kamera dengan akurasi tinggi menggunakan teknologi MediaPipe</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="bi bi-chat-square-text"></i>
+              </div>
+              <h3 class="feature-title">Komunikasi 2 Arah</h3>
+              <p>Terjemahkan gesture ke teks dan sebaliknya dengan fitur text-to-speech untuk interaksi yang lancar</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="bi bi-collection"></i>
+              </div>
+              <h3 class="feature-title">Kamus SIBI</h3>
+              <p>Panduan lengkap untuk mempelajari gesture SIBI dari A-Z dengan contoh visual dan penjelasan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cara Kerja -->
+    <section id="how-it-works" class="steps-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Cara Menggunakan</h2>
+          <p>Hanya perlu 3 langkah sederhana untuk mulai berkomunikasi</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <h3 class="feature-title">Akses Kamera</h3>
+              <p>Izinkan akses kamera untuk mulai mendeteksi gesture tangan Anda</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <h3 class="feature-title">Buat Gesture SIBI</h3>
+              <p>Lakukan gesture huruf atau kata sesuai kamus SIBI di depan kamera</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <h3 class="feature-title">Dapatkan Terjemahan</h3>
+              <p>Sistem akan menerjemahkan gesture menjadi teks yang bisa dikirim atau dibacakan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center text-lg-start">
+          <p class="mb-0">&copy; 2025 <strong>TunaTalk</strong>. Seluruh Hak Dilindungi.</p>
+        </div>
+        <div class="col-lg-6 text-center text-lg-end">
+          <p class="mb-0">Didukung oleh <span style="color: var(--primary)">MediaPipe</span> dan <span style="color: var(--primary)">gTTS</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Inisialisasi AOS animasi
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    });
+  </script>
+</body>
+</html>

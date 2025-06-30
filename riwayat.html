@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TunaTalk - Riwayat Percakapan</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3f3dff;
+      --secondary: #6c63ff;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --border-radius: 12px;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7ff;
+      color: var(--dark);
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Navbar */
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .nav-menu li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-menu li a:hover {
+      color: var(--primary);
+      background-color: rgba(63, 61, 255, 0.1);
+    }
+    
+    .nav-menu li a.active {
+      color: white;
+      background-color: var(--primary);
+    }
+    
+    /* Main Content */
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .page-header h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .filter-label {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .filter-input {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+    }
+    
+    .btn {
+      padding: 0.5rem 1.5rem;
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(63, 61, 255, 0.2);
+    }
+    
+    /* History Container */
+    .history-container {
+      background-color: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    .history-header {
+      padding: 1rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .history-body {
+      padding: 1.5rem;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    
+    /* Conversation Item */
+    .conversation-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
+    
+    .conversation-date {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .message {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .message-bubble {
+      max-width: 80%;
+      padding: 0.75rem 1.25rem;
+      border-radius: 1rem;
+      line-height: 1.5;
+      position: relative;
+      word-break: break-word;
+    }
+    
+    .user-message {
+      align-self: flex-end;
+      background-color: var(--primary);
+      color: white;
+      border-bottom-right-radius: 0.25rem;
+    }
+    
+    .system-message {
+      align-self: flex-start;
+      background-color: #f1f1f1;
+      color: var(--dark);
+      border-bottom-left-radius: 0.25rem;
+    }
+    
+    .message-time {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--gray);
+    }
+    
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-menu {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      
+      .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .message-bubble {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-menu">
+        <li><a href="beranda.html">Beranda</a></li>
+        <li><a href="deteksi.html">Deteksi</a></li>
+        <li><a href="komunikasi.html">Komunikasi</a></li>
+        <li><a href="riwayat.html" class="active">Riwayat</a></li>
+        <li><a href="kamus.html">Kamus</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="page-header">
+      <h1>Riwayat Percakapan</h1>
+      <p>Lihat dan kelola semua percakapan yang pernah dilakukan</p>
+    </div>
+    
+    <div class="filter-section">
+      <div class="filter-group">
+        <span class="filter-label"><i class="fas fa-calendar-alt"></i> Filter Tanggal:</span>
+        <input type="date" id="filterTanggal" class="filter-input">
+      </div>
+      <button class="btn btn-primary" onclick="filterRiwayat()">
+        <i class="fas fa-filter"></i> Terapkan Filter
+      </button>
+      <button class="btn btn-primary" onclick="resetFilter()">
+        <i class="fas fa-sync-alt"></i> Reset
+      </button>
+    </div>
+    
+    <div class="history-container">
+      <div class="history-header">
+        <span><i class="fas fa-history"></i> Daftar Percakapan</span>
+        <span id="totalConversations">0 percakapan</span>
+      </div>
+      
+      <div class="history-body" id="riwayatContainer">
+        <!-- Riwayat akan dimuat di sini -->
+      </div>
+    </div>
+  </main>
+
+  <!-- SCRIPT -->
+  <script>
+    // Inisialisasi data
+    let riwayat = JSON.parse(localStorage.getItem('tunaTalkChat')) || [];
+    const riwayatContainer = document.getElementById('riwayatContainer');
+    const filterTanggal = document.getElementById('filterTanggal');
+    const totalConversations = document.getElementById('totalConversations');
+    
+    // Format tanggal
+    function formatDate(timestamp) {
+      const date = new Date(timestamp);
+      return date.toLocaleDateString('id-ID', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+    
+    function formatTime(timestamp) {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString('id-ID', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      });
+    }
+    
+    // Render riwayat
+    function renderRiwayat(data) {
+      riwayatContainer.innerHTML = '';
+      totalConversations.textContent = `${data.length} percakapan`;
+      
+      if (data.length === 0) {
+        riwayatContainer.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-comment-slash"></i>
+            <h3>Tidak ada riwayat percakapan</h3>
+            <p>Mulai percakapan baru di halaman Komunikasi</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // Kelompokkan berdasarkan tanggal
+      const groupedByDate = data.reduce((acc, item) => {
+        const date = new Date(item.timestamp).toDateString();
+        if (!acc[date]) {
+          acc[date] = [];
+        }
+        acc[date].push(item);
+        return acc;
+      }, {});
+      
+      // Render per kelompok tanggal
+      Object.entries(groupedByDate).forEach(([date, items]) => {
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'conversation-item';
+        
+        const dateHeader = document.createElement('div');
+        dateHeader.className = 'conversation-date';
+        dateHeader.innerHTML = `
+          <i class="fas fa-calendar-day"></i>
+          ${formatDate(new Date(date))}
+        `;
+        
+        dateDiv.appendChild(dateHeader);
+        
+        items.forEach(item => {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'message';
+          
+          // Pesan pengguna
+          const userMsg = document.createElement('div');
+          userMsg.className = 'message-bubble user-message';
+          userMsg.textContent = item.content;
+          
+          const userTime = document.createElement('div');
+          userTime.className = 'message-time';
+          userTime.textContent = `Anda - ${formatTime(item.timestamp)}`;
+          
+          messageDiv.appendChild(userMsg);
+          messageDiv.appendChild(userTime);
+          
+          // Balasan sistem (jika ada)
+          if (item.sender === 'user' && items.find(i => i.timestamp > item.timestamp && i.sender === 'system')) {
+            const systemReply = items.find(i => i.timestamp > item.timestamp && i.sender === 'system');
+            
+            const systemMsg = document.createElement('div');
+            systemMsg.className = 'message-bubble system-message';
+            systemMsg.textContent = systemReply.content;
+            
+            const systemTime = document.createElement('div');
+            systemTime.className = 'message-time';
+            systemTime.textContent = `Sistem - ${formatTime(systemReply.timestamp)}`;
+            
+            messageDiv.appendChild(systemMsg);
+            messageDiv.appendChild(systemTime);
+          }
+          
+          dateDiv.appendChild(messageDiv);
+        });
+        
+        riwayatContainer.appendChild(dateDiv);
+      });
+    }
+    
+    // Filter riwayat
+    function filterRiwayat() {
+      const tgl = filterTanggal.value;
+      if (!tgl) {
+        renderRiwayat(riwayat);
+        return;
+      }
+      
+      const filtered = riwayat.filter(item => {
+        const itemDate = new Date(item.timestamp).toISOString().split('T')[0];
+        return itemDate === tgl;
+      });
+      
+      renderRiwayat(filtered);
+    }
+    
+    // Reset filter
+    function resetFilter() {
+      filterTanggal.value = '';
+      renderRiwayat(riwayat);
+    }
+    
+    // Event listener untuk input date
+    filterTanggal.addEventListener('change', function() {
+      if (this.value) {
+        filterRiwayat();
+      }
+    });
+    
+    // Render awal
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set tanggal minimum dan maksimum
+      if (riwayat.length > 0) {
+        const dates = riwayat.map(item => new Date(item.timestamp).toISOString().split('T')[0]);
+        filterTanggal.min = dates.sort()[0];
+        filterTanggal.max = dates.sort().reverse()[0];
+      }
+      
+      renderRiwayat(riwayat);
+    });
+  </script>
+</body>
+</html>
