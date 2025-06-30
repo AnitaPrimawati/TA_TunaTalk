@@ -1,5 +1,5 @@
-# Tuna Talk
-Proyek ini merupakan sistem deteksi gesture tangan berbasis JavaScript yang menggunakan MediaPipe dan algoritma K-Nearest Neighbor (KNN) untuk menerjemahkan huruf-huruf SIBI secara real-time. Melalui webcam, sistem mendeteksi landmark tangan, mengklasifikasikannya menjadi huruf, lalu menyusunnya menjadi kalimat yang dapat diedit dan dikirim. Dirancang dengan antarmuka web yang responsif, proyek ini mendukung komunikasi dua arah antara tunawicara dan masyarakat umum, serta siap dikembangkan lebih lanjut dengan integrasi perangkat IoT seperti LCD dan speaker.
+# TunaTalk
+TunaTalk merupakan sistem deteksi gesture tangan berbasis JavaScript yang menggunakan MediaPipe dan algoritma K-Nearest Neighbor (KNN) untuk menerjemahkan huruf-huruf SIBI secara real-time. Melalui webcam, sistem mendeteksi landmark tangan, mengklasifikasikannya menjadi huruf, lalu menyusunnya menjadi kalimat yang dapat diedit dan dikirim. Dirancang dengan antarmuka web yang responsif, proyek ini mendukung komunikasi dua arah antara tunawicara dan masyarakat umum, serta siap dikembangkan lebih lanjut dengan integrasi perangkat IoT seperti LCD dan speaker.
 
 ## 📸 Tampilan Sistem TunaTalk
 
